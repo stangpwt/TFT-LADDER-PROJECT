@@ -23,6 +23,7 @@ jobs:
       - name: Run script
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python main.py
 
       - name: Commit and Push changes
