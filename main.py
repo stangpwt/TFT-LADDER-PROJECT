@@ -64,7 +64,7 @@ print(f"✅ บันทึกไฟล์สำเร็จในโฟลเ�
 WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 if WEBHOOK_URL:
-    top_player = final_df.iloc[0]
+    top_player = all_players.iloc[0]
     message = {
         "content": f"✅ **อัปเดตอันดับ TFT สำเร็จ!** ({date_str})\n"
                    f"🏆 อันดับ 1: **{top_player['Riot_ID']}** ({top_player['leaguePoints']} LP)\n"
