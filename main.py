@@ -57,7 +57,7 @@ dt_th = datetime.utcnow() + timedelta(hours=7)
 date_str = dt_th.strftime("%Y%m%d")
 filename = f"{folder_name}/tft_players_{date_str}.csv" 
 
-final_df.to_csv(filename, index=False, encoding='utf-8-sig')
+all_players.to_csv(filename, index=False, encoding='utf-8-sig')
 print(f"✅ บันทึกไฟล์สำเร็จในโฟลเดอร์: {filename}")
 
 #DISCORD NOTI
