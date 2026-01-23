@@ -53,6 +53,7 @@ if not os.path.exists(folder_name):
     os.makedirs(folder_name)
     print(f"📁 Created folder: {folder_name}")
 
+dt_th = datetime.utcnow() + timedelta(hours=7)
 date_str = dt_th.strftime("%Y%m%d")
 filename = f"{folder_name}/tft_players_{date_str}.csv" 
 
