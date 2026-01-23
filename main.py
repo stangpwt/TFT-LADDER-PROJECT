@@ -47,11 +47,19 @@ all_players['total_games'] = all_players['wins'] + all_players['losses']
 all_players['win_rate'] = (all_players['wins'] / all_players['total_games'] * 100).round(2)
 all_players['updated_at'] = pd.Timestamp.now(tz='Asia/Bangkok')
 
-date_str = datetime.now().strftime("%Y%m%d")
-filename = f"tft_players_{date_str}.csv"
-final_df = all_players.drop(['rank', 'updated_at'], axis=1)
-final_df.to_csv(filename, index=False, encoding='utf-8-sig')
+#Folder
+folder_name = "data"
+if not os.path.exists(folder_name):
+    os.makedirs(folder_name)
+    print(f"📁 Created folder: {folder_name}")
 
+date_str = dt_th.strftime("%Y%m%d")
+filename = f"{folder_name}/tft_players_{date_str}.csv" 
+
+final_df.to_csv(filename, index=False, encoding='utf-8-sig')
+print(f"✅ บันทึกไฟล์สำเร็จในโฟลเดอร์: {filename}")
+
+#DISCORD NOTI
 WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 if WEBHOOK_URL:
