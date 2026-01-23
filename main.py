@@ -51,3 +51,16 @@ date_str = datetime.now().strftime("%Y%m%d")
 filename = f"tft_players_{date_str}.csv"
 final_df = all_players.drop(['rank', 'updated_at'], axis=1)
 final_df.to_csv(filename, index=False, encoding='utf-8-sig')
+
+WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
+
+if WEBHOOK_URL:
+    top_player = final_df.iloc[0]
+    message = {
+        "content": f"✅ **อัปเดตอันดับ TFT สำเร็จ!** ({date_str})\n"
+                   f"🏆 อันดับ 1: **{top_player['Riot_ID']}** ({top_player['leaguePoints']} LP)\n"
+                   f"📊 จำนวนผู้เล่นทั้งหมด: {len(final_df)} คน\n"
+                   f"🔗 ดูข้อมูลเต็มๆ ได้ที่ GitHub ของคุณครับ!"
+    }
+    requests.post(WEBHOOK_URL, json=message)
+    print("🔔 ส่งการแจ้งเตือนไปยัง Discord แล้ว")
