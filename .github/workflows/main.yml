@@ -1,14 +1,6 @@
 name: Update TFT Leaderboard
 
 
-
-on:
-  schedule:
-    - cron: '45 15 * * *'  # 15:45 UTC ตรงกับ 22:45 เวลาไทย
-  workflow_dispatch:
-
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
